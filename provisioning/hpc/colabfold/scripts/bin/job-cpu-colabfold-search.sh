@@ -9,6 +9,7 @@ cd /fsx/vmtouch
 sudo make install
 
 # メモリにDBのデータを読み込む(vmtouch)
+# Read DB into memory (vmtouch)
 cd /fsx/colabfold/database/
 sudo vmtouch -f -w -t -l -d -m 1000G *.idx
 
@@ -19,4 +20,5 @@ UNIREFDB=uniref30_2202_db
 DB_PATH=/fsx/colabfold/database/
 
 # $1: FASTAファイルへのフルパス, $2: 生成するmsasファイルの置き場（mktempで作った一時フォルダ）
+# $1 Full path to the fasta file, $2: The temporary directory with the msa folder where the CPU job was run
 colabfold_search --db1=$UNIREFDB $1 $DB_PATH/ $2

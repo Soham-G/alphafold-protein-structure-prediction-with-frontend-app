@@ -9,12 +9,14 @@ output = {"cpu_job_id": "", "gpu_job_id": "", "error": "", "fastaPath": ""}
 stderr = ""
 
 # fasta ファイルが渡されたかチェック
+# Check if the fasta file is passed in
 if len(args) != 2:
     stderr += "Error: there's no fasta file input"
     output["error"] = stderr
     print(json.dumps(output))
 
 # 指定された fasta ファイルが input 配下に配置されているかチェック
+# Check if the fasta file is placed in the input directory
 elif not os.path.isfile("/fsx/colabfold/job/input/" + args[1]):
     stderr += "Error: there's no fasta file in /input directory"
     output["error"] = stderr
@@ -23,12 +25,14 @@ else:
     fasta_fullpath = "/fsx/colabfold/job/input/" + args[1]
 
     # テンポラリディレクトリの準備
+    # Create a temporary directory
     dirname = str(uuid.uuid4())
     tmpdir = "/fsx/colabfold/tmp/" + dirname
     msasdir = tmpdir + "/msas"
     os.makedirs(msasdir)
 
     # CPU サーチジョブの実行
+    # Run the CPU search job
     cpu_job_command = " ".join(
         [
             "sbatch -p queue-cpu /fsx/colabfold/scripts/bin/job-cpu-colabfold-search.sh",
@@ -49,6 +53,7 @@ else:
         cpu_job_id = cpu_output.stdout.rsplit(" ", 1)[1].strip()
 
         # GPU バッチジョブを実行
+        # Run the GPU batch job after the CPU job, if it completes successfully
         gpu_job_command = " ".join(
             [
                 "sbatch -p queue-gpu",
