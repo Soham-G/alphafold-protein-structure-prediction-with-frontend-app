@@ -4,3 +4,7 @@
 sudo apt-get install aria2 -y
 mkdir /fsx/colabfold/database
 /fsx/colabfold/scripts/bin/setup_databases.sh /fsx/colabfold/database
+source ~/.bashrc
+# The database install fails the first time round, as mmseqs is not in the path yet, but is setup in the database script.
+# The second time round, mmseqs is in the path, and the install succeeds.
+/fsx/colabfold/scripts/bin/setup_databases.sh /fsx/colabfold/database
