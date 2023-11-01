@@ -241,6 +241,10 @@ nohup bash /fsx/alphafold2/scripts/bin/setup_database.sh &
 <details>
 <summary>For ColabFold</summary>
 <pre>
+cd /fsx
+git clone https://github.com/aws-samples/alphafold-protein-structure-prediction-with-frontend-app.git
+mkdir colabfold
+cp -r alphafold-protein-structure-prediction-with-frontend-app/provisioning/hpc/colabfold/scripts/ colabfold/
 bash /fsx/colabfold/scripts/bin/app_install.sh
 sbatch /fsx/colabfold/scripts/setupDatabase.bth
 </pre>
