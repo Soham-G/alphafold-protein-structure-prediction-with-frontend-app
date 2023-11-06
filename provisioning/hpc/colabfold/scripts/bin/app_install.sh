@@ -1,3 +1,4 @@
+set -e
 #####
 # /fsx 下の user:group 変更
 #####
@@ -31,6 +32,7 @@ sudo make install
 #####
 # ColabFold インストール
 #####
+mkdir -p /fsx/colabfold
 cd /fsx/colabfold
 wget https://raw.githubusercontent.com/YoshitakaMo/localcolabfold/main/install_colabbatch_linux.sh
 bash install_colabbatch_linux.sh

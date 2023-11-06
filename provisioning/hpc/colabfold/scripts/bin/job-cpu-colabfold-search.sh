@@ -4,14 +4,14 @@
 
 export PATH="/fsx/colabfold/localcolabfold/colabfold-conda/bin:/fsx/mmseqs2/bin:${PATH}"
 
-# vmtouch
-cd /fsx/vmtouch
-sudo make install
+# # vmtouch
+# cd /fsx/vmtouch
+# sudo make install
 
-# メモリにDBのデータを読み込む(vmtouch)
-# Read DB into memory (vmtouch)
-cd /fsx/colabfold/database/
-sudo vmtouch -f -w -t -l -d -m 1000G *.idx
+# # メモリにDBのデータを読み込む(vmtouch)
+# # Read DB into memory (vmtouch)
+# cd /fsx/colabfold/database/
+# sudo vmtouch -f -w -t -l -d -m 1000G *.idx
 
 # colabfold_searchを実行
 cd /home/ubuntu
